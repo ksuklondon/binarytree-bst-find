@@ -122,6 +122,23 @@ public:
 	ValueType* find(KeyType const& key)
 	{
 		//TODO Implement find methods that looks for a key with the given value
+		auto node = &root;
+		while (*node != nullptr)
+		{
+			if (key == (*node)->key)
+			{
+				return &((*node)->value);
+			}
+			else if (key < (*node)->key)
+			{
+				node = &((*node)->left);
+			}
+			else
+			{
+				node = &((*node)->right);
+			}
+		}
+		return nullptr; // Key not found
 	}
 
 	std::string toString() const
